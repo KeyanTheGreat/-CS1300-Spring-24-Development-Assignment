@@ -24,6 +24,36 @@ function App() {
     10:'$21',
     11:'$23'
   });
+  const getImageProperties = (index) => {
+    switch (index) {
+      case 0:
+        return 'Painting, Predator';
+      case 1:
+        return 'Painting, Prey';
+      case 2:
+        return 'Painting, Prey';
+      case 3:
+        return 'Painting, Predator';
+      case 4:
+        return 'Drawing, Prey';
+      case 5:
+        return 'Drawing, Prey';
+      case 6:
+        return 'Drawing, Predator';
+      case 7:
+        return 'Drawing, Prey';
+      case 8:
+        return 'Drawing, Predator';
+      case 9:
+        return 'Drawing, Prey';
+      case 10:
+        return 'Painting, Predator';
+      case 11:
+        return 'Painting, Predator';
+      default:
+        return '';
+    }
+  };
   const getImageTitle = (index) => {
     switch (index) {
       case 0:
@@ -184,140 +214,14 @@ function App() {
         <div className="content">
           {selected !== null ? (
             <div>
-              {selected === 0 && (
-                <>
-                <img
+              <img
                   className={`right-image`}
-                  src={`paint1.png`}
+                  src={`paint${selected +1}.png`}
                   alt={`Image1`}
                 />
-                  <h2>Fox</h2>
-                  <p>Painting, Predator</p>
-                </>
-              )}
-              {selected === 1 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint2.png`}
-                  alt={`Image1`}
-                />
-
-                  <h2>Hare</h2>
-                  <p>Painting, Prey</p>
-                </>
-              )}
-              {selected === 2 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint3.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Yak</h2>
-                  <p>Painting, Prey</p>
-                </>
-              )}
-              {selected === 3 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint4.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Lion</h2>
-                  <p>Painting, Predator</p>
-                </>
-              )}
-              {selected === 4 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint5.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Kitten</h2>
-                  <p>Drawing, Prey</p>
-                </>
-              )}
-              {selected === 5 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint6.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Bunny</h2>
-                  <p>Drawing, Prey</p>
-                </>
-              )}
-              {selected === 6 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint7.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Eagle</h2>
-                  <p>Drawing, Predator</p>
-                </>
-              )}
-              {selected === 7 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint8.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Elk</h2>
-                  <p>Drawing, Prey</p>
-                </>
-              )}
-              {selected === 8 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint9.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Chill Lion</h2>
-                  <p>Drawing, Predator</p>
-                </>
-              )}
-              {selected === 9 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint10.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Squirell</h2>
-                  <p>Drawing, Prey</p>
-                </>
-              )}
-              {selected === 10 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint11.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Hyena</h2>
-                  <p>Painting, Predator</p>
-                </>
-              )}
-              {selected === 11 && (
-                <>
-                <img
-                  className={`right-image`}
-                  src={`paint12.png`}
-                  alt={`Image1`}
-                />
-                  <h2>Hippo</h2>
-                  <p>Painting, Predator</p>
-                </>
-              )}
-              <p>Price: {prices[selected]}</p> {/* Display the price */}
+              <h2>{getImageTitle(selected)}</h2>
+              <p>{getImageProperties(selected)}</p>
+              <p>Price: {prices[selected]}</p>
             </div>
           ) : (
             <h2 className="select-message">Please select an art piece!</h2>
@@ -334,7 +238,7 @@ function App() {
                   alt={`Image ${index +1}`}
                   onClick={() => handleItemClick(index)}
                 />
-                <p>{prices[index]}</p>
+                <p>{prices[index]}, {getImageTitle(index)}, {getImageProperties(index)}</p>
                 <button onClick={() => handleAddToCart(index)}>+ Add to cart</button>
                 <button onClick={() => handleDeleteItem(index)}>-Delete from cart</button>
               </div>
