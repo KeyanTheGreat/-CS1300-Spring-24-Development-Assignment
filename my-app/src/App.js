@@ -75,7 +75,7 @@ function App() {
       case 8:
         return 'Chill Lion';
       case 9:
-        return 'Squirell';
+        return 'Squirrel';
       case 10:
         return 'Hyena';
       case 11:
