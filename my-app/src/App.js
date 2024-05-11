@@ -171,6 +171,8 @@ function App() {
       <header className="header">
         <h1 className="header-text">Welcome to Keyan's Art Shop!</h1>
       </header>
+      <div className='center'>
+      <div className='Left'>
       <div className="cart">
       <h3 >Cart : 
       {cartItems.map((item, index) => ( <p key={index} className='cart-item'>{item},</p> ))} </h3>
@@ -211,23 +213,7 @@ function App() {
         </label>
       </div>
       <button onClick={handleSortButtonClick}>Sort by Price</button>
-        <div className="content">
-          {selected !== null ? (
-            <div>
-              <img
-                  className={`right-image`}
-                  src={`paint${selected +1}.png`}
-                  alt={`Image1`}
-                />
-              <h2>{getImageTitle(selected)}</h2>
-              <p>{getImageProperties(selected)}</p>
-              <p>Price: {prices[selected]}</p>
-            </div>
-          ) : (
-            <h2 className="select-message">Please select an art piece!</h2>
-          )}
-        </div>
-        <div className="image-container">
+      <div className="image-container">
           {sortedIndices.map((index) => {
            index = parseInt(index);
            return applyFilter(index) && (
@@ -244,6 +230,24 @@ function App() {
               </div>
             )
           })}
+        </div>
+        </div>
+        <div className="content">
+          {selected !== null ? (
+            <div>
+              <img
+                  className={`right-image`}
+                  src={`paint${selected +1}.png`}
+                  alt={`Image1`}
+                />
+              <h2>{getImageTitle(selected)}</h2>
+              <p>{getImageProperties(selected)}</p>
+              <p>Price: {prices[selected]}</p>
+            </div>
+          ) : (
+            <h2 className="select-message">Please select an art piece!</h2>
+          )}
+        </div>
         </div>
     </div>
   );
