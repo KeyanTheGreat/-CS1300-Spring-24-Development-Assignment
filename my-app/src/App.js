@@ -100,16 +100,28 @@ function App() {
     if (!predatorFilter && !preyFilter && !drawingFilter && !paintingFilter) {
       return true; // No filters applied, show all images
     }
-    if (predatorFilter && (index === 0 || index === 3 || index === 6 || index === 10 || index === 11 || index === 8)) {
+    if (predatorFilter && drawingFilter && (index === 8 || index === 6)) {
+      return true; // No filters applied, show all images
+    }
+    if (preyFilter && drawingFilter && (index === 9 || index === 4 || index === 5 || index === 7)) {
+      return true; // No filters applied, show all images
+    }
+    if (predatorFilter && paintingFilter && (index === 11 || index === 10 || index === 0 || index == 3)) {
+      return true; // No filters applied, show all images
+    }
+    if (preyFilter && paintingFilter && (index === 1 || index === 2 )) {
+      return true; // No filters applied, show all images
+    }
+    if (predatorFilter && !paintingFilter && !drawingFilter && (index === 0 || index === 3 || index === 6 || index === 10 || index === 11 || index === 8)) {
       return true; // Show images with index 0 and 2 (predators)
     }
-    if (preyFilter && (index === 1 || index === 2 || index === 4 || index === 5 || index === 7 || index === 9 )) {
+    if (preyFilter && !paintingFilter && !drawingFilter && (index === 1 || index === 2 || index === 4 || index === 5 || index === 7 || index === 9 )) {
       return true; // Show image with index 1 (prey)
     }
-    if (drawingFilter && (index === 9 || index === 8 || index === 4 || index === 5 || index === 6|| index === 7)) {
+    if (drawingFilter && !predatorFilter && !preyFilter && (index === 9 || index === 8 || index === 4 || index === 5 || index === 6|| index === 7)) {
       return true; // Show image with index 2 (drawing)
     }
-    if (paintingFilter && (index === 1 || index === 0 || index === 2 || index === 10 || index === 11 || index === 3)) {
+    if (paintingFilter && !predatorFilter && !preyFilter && (index === 1 || index === 0 || index === 2 || index === 10 || index === 11 || index === 3)) {
       return true; // Show images with index 0 and 1 (paintings)
     }
     return false; // Image doesn't match the selected filters
