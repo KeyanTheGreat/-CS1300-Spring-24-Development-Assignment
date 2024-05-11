@@ -86,8 +86,12 @@ function App() {
   };
   const handleDeleteItem = (index) => {
     const selectedItemTitle = getImageTitle(index);
-    const updatedCartItems = cartItems.filter((item) => item !== selectedItemTitle);
-    setCartItems(updatedCartItems);
+    const itemIndex = cartItems.findIndex((item) => item === selectedItemTitle);
+    if (itemIndex !== -1) {
+      const updatedCartItems = [...cartItems];
+      updatedCartItems.splice(itemIndex, 1);
+      setCartItems(updatedCartItems);
+    }
   };
 
   const [cartItems, setCartItems] = useState([]);
